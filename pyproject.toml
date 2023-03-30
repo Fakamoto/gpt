@@ -1,0 +1,53 @@
+[project]
+name = "gpt"
+description = "ChatGPT in the terminal"
+readme = "README.md"
+version = "0.0.1"
+authors = [{ name="Facundo Goiriz", email="facundogoiriz@gmail.com" }]
+classifiers = ["Private :: Do Not Upload"]
+keywords = ["ai", "openai", "chatgpt", "gpt"]
+requires-python = ">=3.10, <4"
+dependencies = [
+  "typer[all] >=0.4.1, <0.8",
+  "openai >=0.27.2, <0.27.3"
+]
+
+[project.optional-dependencies]
+
+test = [
+  "pytest >=7.1, <8.0",
+  "pytest-cov >=3.0, <4",
+  "coverage >=6.4, <7",
+  "black >=22.6, <23",
+]
+
+[project.scripts]
+gpt = "gpt:cli"
+g = "gpt:cli"
+
+[tool.setuptools]
+packages = ["cli"]
+
+[tool.black]
+line-length = 88
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | venv
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+# make it compatible with black
+profile = "black"
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
