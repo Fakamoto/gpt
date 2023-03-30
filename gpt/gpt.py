@@ -63,12 +63,13 @@ def main():
     prompt = ""
     while prompt != "q":
         prompt = Prompt.ask("$")
+        print("")
         message = {"role": "user", "content": f"{prompt}"}
         messages.append(message)
         text, tokens = generate_text(prompt=messages)
         response = {"role": "assistant", "content": f"{text}"}
         messages.append(response)
-        print(f"{text}\n")
+        print(f"\n{text}\n")
 
 
 def cli():
