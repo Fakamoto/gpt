@@ -5,10 +5,14 @@ import typer
 from rich import print
 from rich.prompt import Prompt
 import openai
-
+import readline
 
 app = typer.Typer()
 
+readline.parse_and_bind('"\e[A": history-search-backward')
+readline.parse_and_bind('"\e[B": history-search-forward')
+readline.parse_and_bind('"\e[C": forward-char')
+readline.parse_and_bind('"\e[D": backward-char')
 
 openai_organization_id = os.getenv("OPENAI_ORGANIZATION_ID")
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -44,7 +48,7 @@ def generate_text(
     else:
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=prompt,
+            prompt=prompt if isinstance(prompt, str) else prompt[-1].get("content"),
             temperature=temperature,
             max_tokens=max_tokens,
             top_p=top_p,
