@@ -23,7 +23,6 @@ test = [
 
 [project.scripts]
 gpt = "gpt:cli"
-g = "gpt:cli"
 
 [tool.setuptools]
 packages = ["cli"]
