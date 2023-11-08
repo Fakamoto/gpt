@@ -20,7 +20,7 @@ git clone https://github.com/Fakamoto/gpt
 2. Navigate to the project directory:
 
 ```bash
-cd chatgpt
+cd gpt
 ```
 
 3. Install the package using pip:
